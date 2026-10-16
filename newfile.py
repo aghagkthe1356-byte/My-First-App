@@ -9,8 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build APK
-        uses: digreatbrian/buildozer-action@v4
+        uses: digreatbrian/buildozer-action@v2
         with:
+          python-version: 3.8
           buildozer-cmd: buildozer -v android debug
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
