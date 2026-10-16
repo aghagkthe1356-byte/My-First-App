@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build APK
-        uses: digreatbrian/buildozer-action@v2
+      - name: Build with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
         with:
-          python-version: 3.8
-          buildozer-cmd: buildozer -v android debug
-      - name: Upload artifacts
+          buildozer_version: stable
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ./bin/*.apk
+          path: ${{ steps.buildozer.outputs.filename
